@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#6c4cf1">
+  <meta name="description" content="Renkli, çevrimdışı destekli çarpım tablosu oyunu.">
+  <link rel="manifest" href="/static/manifest.json">
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="apple-touch-icon" href="/static/icon-192.png">
+  <title>Çarpım Şampiyonu</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <div class="brand-mark" aria-hidden="true">×</div>
+      <div><p class="eyebrow">MİNİ MATEMATİK ARENASI</p><h1>Çarpım Şampiyonu</h1></div>
+      <button id="soundToggle" class="icon-button" aria-label="Ses efektlerini aç veya kapat" title="Ses">🔊</button>
+    </header>
+
+    <section id="homeScreen" class="screen">
+      <div class="hero-card">
+        <div class="hero-copy">
+          <span class="pill">⭐ Her gün biraz daha hızlı</span>
+          <h2>Hazır mısın,<br><span>şampiyon?</span></h2>
+          <p>Karışık çarpımları çöz, serini büyüt ve kendi rekorunu kır.</p>
+          <button id="playButton" class="primary-button">OYNA <span>→</span></button>
+        </div>
+        <div class="hero-art" aria-hidden="true"><div class="orbit orbit-one">7 × 8</div><div class="orbit orbit-two">6 × 4</div><div class="big-star">★</div><div class="orbit orbit-three">9 × 3</div></div>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card purple"><span class="stat-icon">🏆</span><span class="stat-label">En iyi puan</span><strong id="bestScore">0</strong></article>
+        <article class="stat-card orange"><span class="stat-icon">🔥</span><span class="stat-label">En iyi seri</span><strong id="bestStreak">0</strong></article>
+      </div>
+
+      <section class="daily-card">
+        <div class="section-heading"><div><p class="eyebrow">BUGÜNÜN GÖREVİ</p><h3>5 dakika pratik</h3></div><span class="daily-emoji">🎯</span></div>
+        <div class="progress-track"><div id="dailyProgress" class="progress-fill"></div></div>
+        <div class="progress-caption"><span id="dailyMinutes">0 / 5 dakika</span><span id="dailyPercent">0%</span></div>
+      </section>
+
+      <button id="reviewButton" class="review-card">
+        <span class="review-icon">🧠</span><span class="review-copy"><strong>Tekrar çalış</strong><small>Takıldığın işlemleri yeniden çöz</small></span><span id="reviewCount" class="review-count">0</span><span class="arrow">›</span>
+      </button>
+      <p class="footnote">İlerlemen bu cihazda saklanır.</p>
+    </section>
+
+    <section id="gameScreen" class="screen hidden">
+      <div class="game-topline"><button id="quitButton" class="back-button">‹ Ana ekran</button><span class="round-pill">⚡ 60 saniyelik tur</span></div>
+      <div class="timer-card">
+        <div><span class="mini-label">TUR SÜRESİ</span><strong id="totalTime">60</strong><span class="unit">sn</span></div>
+        <div class="timer-track"><div id="totalProgress" class="timer-fill"></div></div>
+        <div class="question-clock"><span class="mini-label">SORU</span><strong id="questionTime">15</strong></div>
+      </div>
+      <div class="game-meta"><span id="questionNumber">SORU 1</span><span>⭐ <strong id="score">0</strong> puan</span><span>🔥 <strong id="streak">0</strong> seri</span></div>
+      <div class="question-card">
+        <div class="question-decoration">✦</div>
+        <p id="questionPrompt">KAÇ EDER?</p>
+        <div class="equation"><span id="factorA">7</span><span class="multiply">×</span><span id="factorB">8</span><span class="equals">=</span><span class="question-mark">?</span></div>
+        <p id="feedback" class="feedback" aria-live="polite">Doğru cevabı seç!</p>
+      </div>
+      <div id="answers" class="answers-grid"></div>
+      <p class="game-hint">Doğru cevabı bulmak için dört şıktan birine dokun.</p>
+    </section>
+
+    <section id="resultScreen" class="screen hidden">
+      <div class="result-card">
+        <div class="result-trophy">🏆</div>
+        <p class="eyebrow">TUR TAMAMLANDI</p>
+        <h2 id="resultTitle">Harika iş!</h2>
+        <p id="resultSubtitle">Her tur seni biraz daha geliştirir.</p>
+        <div class="result-score"><span>PUANIN</span><strong id="finalScore">0</strong></div>
+        <div class="result-stats"><div><span>✅</span><strong id="correctCount">0</strong><small>Doğru</small></div><div><span>❌</span><strong id="wrongCount">0</strong><small>Yanlış</small></div><div><span>🔥</span><strong id="finalStreak">0</strong><small>En iyi seri</small></div></div>
+        <button id="againButton" class="primary-button full">TEKRAR OYNA ↻</button>
+        <button id="homeButton" class="secondary-button full">Ana ekrana dön</button>
+      </div>
+    </section>
+
+    <section id="reviewScreen" class="screen hidden">
+      <div class="game-topline"><button id="reviewBackButton" class="back-button">‹ Ana ekran</button><span class="round-pill">🧠 Tekrar zamanı</span></div>
+      <div class="review-header"><span class="review-big">🧠</span><h2>Birlikte güçlenelim!</h2><p>Yanlış yaptığın işlemleri yeniden dene.</p></div>
+      <div id="reviewContent"></div>
+    </section>
+    <footer>Made for your daily brain workout ✨</footer>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
